@@ -16,7 +16,9 @@ contract NodeRulesList {
     mapping (uint256 => uint256) private indexOf; //1-based indexing. 0 means non-existent
 
     function calculateKey(bytes32 _enodeHigh, bytes32 _enodeLow, bytes16 _ip, uint16 _port) internal pure returns(uint256) {
-        return uint256(keccak256(abi.encodePacked(_enodeHigh, _enodeLow, _ip, _port)));
+        //return uint256(keccak256(abi.encodePacked(_enodeHigh, _enodeLow, _ip, _port)));
+	// Modification that only checks enode and ignores ip and port
+        return uint256(keccak256(abi.encodePacked(_enodeHigh, _enodeLow)));
     }
 
     function size() internal view returns (uint256) {
