@@ -13,8 +13,8 @@ require('yargs')
        required: false,
        alias: 'a',
      },
-     'node-rules-contract': {
-       description: 'Node Rules Contract Address',
+     'node-ingress': {
+       description: 'Node Ingress Contract Address',
        required: true,
        alias: 'n',
      },

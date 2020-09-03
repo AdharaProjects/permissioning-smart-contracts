@@ -1,8 +1,8 @@
 const  Web3 = require("web3")
 const enodeLib = require("../../lib/enode.js")
 
-exports.command = 'add <enode>'
-exports.desc = 'Add <enode> to allowlist'
+exports.command = 'remove <enode>'
+exports.desc = 'Remove <enode> from allowlist'
 exports.builder = {}
 
 exports.handler = async (argv) => {
@@ -11,10 +11,10 @@ exports.handler = async (argv) => {
 
     enode = enodeLib.utils.parse(argv.enode)
 
-    tx = await nr.addEnode(enode.enodeHigh, enode.enodeLow, enode.hostname, enode.port)
+    tx = await nr.removeEnode(enode.enodeHigh, enode.enodeLow, enode.hostname, enode.port)
 
     if (tx.receipt && tx.receipt.status) {
-      console.log("Added")
+      console.log("Removed")
     } else {
       throw new Error("error, check tx: " + tx.hash)
     }
